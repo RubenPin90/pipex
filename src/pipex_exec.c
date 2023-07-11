@@ -6,7 +6,7 @@
 /*   By: rpinchas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:44:37 by rpinchas          #+#    #+#             */
-/*   Updated: 2023/02/13 15:24:07 by rpinchas         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:08:11 by rpinchas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ int	exec_cmd(t_struc *data)
 		child_two(ultfd, data);
 	if (close(ultfd[0]) == -1 || close(ultfd[1]) == -1)
 		perror("trouble");
+	close(ultfd[2]);
 	waitpid(child1, &status, 0);
 	waitpid(child2, &status, 0);
 	ft_eliminate(data, TYPE_STRUCT, STAY);
 	return (1);
-}
+
